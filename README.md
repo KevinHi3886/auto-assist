@@ -2,6 +2,9 @@
 
 ![Auto Assist icon](src/main/resources/assets/autoassist/icon.png)
 
+> **开源地址：** https://github.com/KevinHi3886/auto-assist  
+> 本项目使用 MIT License，欢迎提交 Issue 或 Pull Request。
+
 一个面向 **Minecraft 26.3 / Fabric** 的客户端实用模组，把三个常用功能整合进同一个 jar：
 
 - **自动补充**：快捷栏物品用完后，从背包补上相同物品。
@@ -64,7 +67,7 @@ Windows：
 gradlew.bat build
 ```
 
-产物位于 `build/libs/autoassist-1.0.0.jar`。
+产物位于 `build/libs/autoassist-1.0.1.jar`。
 
 ## 项目结构
 

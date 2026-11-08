@@ -3,10 +3,15 @@
 	"id": "autoassist",
 	"version": "${version}",
 	"name": "Auto Assist",
-	"description": "自动补充、自动进食和自动搭桥的客户端实用模组。",
+	"description": "自动补充、自动进食和自动搭桥的客户端实用模组。GitHub 开源：https://github.com/KevinHi3886/auto-assist",
 	"authors": [
 		"Beta1122"
 	],
+	"contact": {
+		"homepage": "https://github.com/KevinHi3886/auto-assist",
+		"sources": "https://github.com/KevinHi3886/auto-assist",
+		"issues": "https://github.com/KevinHi3886/auto-assist/issues"
+	},
 	"license": "MIT",
 	"icon": "assets/autoassist/icon.png",
 	"environment": "client",
