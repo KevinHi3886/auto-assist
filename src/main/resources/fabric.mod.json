@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "autoassist",
+	"version": "${version}",
+	"name": "Auto Assist",
+	"description": "自动补充、自动进食和自动搭桥的客户端实用模组。",
+	"authors": [
+		"Beta1122"
+	],
+	"license": "MIT",
+	"icon": "assets/autoassist/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.beta1122.autoassist.AutoAssistClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

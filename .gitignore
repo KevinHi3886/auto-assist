@@ -1,0 +1,14 @@
+# Build output
+build/
+out/
+run/
+
+# Gradle
+.gradle/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.eclipse/
+bin/
