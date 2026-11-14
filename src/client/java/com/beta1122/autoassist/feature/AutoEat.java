@@ -1,5 +1,6 @@
 package com.beta1122.autoassist.feature;
 
+import com.beta1122.autoassist.AutoAssistConfig;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
@@ -21,11 +22,11 @@ import net.minecraft.world.item.consume_effects.ConsumeEffect;
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 
 /**
- * Auto Eat: when the food level is at or below 16, eats the best safe food from
- * the hotbar (moving food from the main inventory when necessary).
+ * Auto Eat: when the food level is at or below the configured threshold (default
+ * 16), eats the best safe food from the hotbar (moving food from the main
+ * inventory when necessary).
  */
 public final class AutoEat {
-	private static final int EAT_THRESHOLD = 16;
 	private static final Set<Item> HARMFUL_FOODS = Set.of(
 			Items.ROTTEN_FLESH,
 			Items.PUFFERFISH,
@@ -50,7 +51,8 @@ public final class AutoEat {
 		}
 
 		LocalPlayer player = client.player;
-		if (player == null
+		if (!AutoAssistConfig.isAutoEatEnabled()
+				|| player == null
 				|| client.gui.screen() != null
 				|| player.isDeadOrDying()
 				|| player.getFoodData().getFoodLevel() >= 20) {
@@ -61,7 +63,7 @@ public final class AutoEat {
 		if (!player.isUsingItem()) {
 			// If we are no longer using food, stop holding the synthetic key until the
 			// end-of-tick handler has selected the next valid food.
-			if (player.getFoodData().getFoodLevel() > EAT_THRESHOLD
+			if (player.getFoodData().getFoodLevel() > AutoAssistConfig.getEatThreshold()
 					|| !isSafeFood(player.getMainHandItem(), player)) {
 				releaseKey(client);
 			}
@@ -69,11 +71,16 @@ public final class AutoEat {
 	}
 
 	public static void tick(Minecraft client, LocalPlayer player) {
+		if (!AutoAssistConfig.isAutoEatEnabled()) {
+			releaseKey(client);
+			return;
+		}
+
 		if (player.isUsingItem()) {
 			return;
 		}
 
-		if (player.getFoodData().getFoodLevel() > EAT_THRESHOLD) {
+		if (player.getFoodData().getFoodLevel() > AutoAssistConfig.getEatThreshold()) {
 			releaseKey(client);
 			return;
 		}

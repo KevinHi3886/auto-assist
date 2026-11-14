@@ -1,5 +1,14 @@
 {
 	"key.autoassist.bridge": "Toggle Auto Bridge",
+	"key.autoassist.config": "Open Auto Assist Settings",
 	"message.autoassist.bridge.on": "Auto Bridge: ON",
-	"message.autoassist.bridge.off": "Auto Bridge: OFF"
+	"message.autoassist.bridge.off": "Auto Bridge: OFF",
+	"screen.autoassist.config": "Auto Assist Settings",
+	"screen.autoassist.hint": "V toggles Auto Bridge in-game",
+	"option.autoassist.auto_refill": "Auto Refill",
+	"option.autoassist.auto_eat": "Auto Eat",
+	"option.autoassist.eat_threshold": "Eat at hunger ≤ %s",
+	"option.autoassist.auto_bridge": "Auto Bridge",
+	"option.autoassist.on": "ON",
+	"option.autoassist.off": "OFF"
 }

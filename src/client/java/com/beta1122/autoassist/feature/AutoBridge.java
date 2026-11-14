@@ -1,5 +1,6 @@
 package com.beta1122.autoassist.feature;
 
+import com.beta1122.autoassist.AutoAssistConfig;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
@@ -30,6 +31,7 @@ public final class AutoBridge {
 	}
 
 	public static void init() {
+		active = AutoAssistConfig.isAutoBridgeEnabled();
 		bridgeKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.autoassist.bridge",
 				InputConstants.Type.KEYBOARD,
@@ -38,9 +40,19 @@ public final class AutoBridge {
 		));
 	}
 
+	public static boolean isActive() {
+		return active;
+	}
+
+	public static void setActive(boolean value) {
+		active = value;
+		AutoAssistConfig.setAutoBridgeEnabled(value);
+		AutoAssistConfig.save();
+	}
+
 	public static void tick(Minecraft client) {
 		while (bridgeKey != null && bridgeKey.consumeClick()) {
-			active = !active;
+			setActive(!active);
 			LocalPlayer player = client.player;
 			if (player != null) {
 				player.sendOverlayMessage(Component.translatable(

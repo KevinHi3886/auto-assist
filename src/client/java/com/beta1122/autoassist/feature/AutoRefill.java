@@ -1,5 +1,6 @@
 package com.beta1122.autoassist.feature;
 
+import com.beta1122.autoassist.AutoAssistConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -23,6 +24,11 @@ public final class AutoRefill {
 	}
 
 	public static void tick(Minecraft client, LocalPlayer player) {
+		if (!AutoAssistConfig.isAutoRefillEnabled()) {
+			remember(player);
+			return;
+		}
+
 		if (player != trackedPlayer || client.level != trackedLevel) {
 			trackedPlayer = player;
 			trackedLevel = client.level;

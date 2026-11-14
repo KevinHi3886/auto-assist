@@ -8,8 +8,9 @@
 一个面向 **Minecraft 26.3 / Fabric** 的客户端实用模组，把三个常用功能整合进同一个 jar：
 
 - **自动补充**：快捷栏物品用完后，从背包补上相同物品。
-- **自动进食**：饱食度 ≤ 16 时，自动吃合适的健康食物。
+- **自动进食**：饱食度低于设定阈值（默认 16）时，自动吃合适的健康食物。
 - **自动搭桥+**：按 **V** 开关，在脚下自动放置手中方块。
+- **控制面板**：按 **F8** 打开，可开关功能并调整自动进食阈值。
 
 全部功能都只在客户端运行，服务器不需要安装。
 
@@ -23,17 +24,31 @@
 
 ### 自动进食
 
-- 饱食度 **≤ 16** 时自动开始进食。
+- 饱食度低于控制面板中设置的阈值（默认 **16**）时自动开始进食。
 - 优先选择营养值高、无负面效果的食物。
 - 会跳过腐肉、河豚、蜘蛛眼、毒马铃薯、紫颂果等有害食物，并检查食物携带的状态效果。
 - 快捷栏没有合适食物时，会自动从主背包换到快捷栏。
-- 饱食度超过 16 后停止。
+- 饱食度超过设定阈值后停止。
 
 ### 自动搭桥+
 
 - 默认按键 **V**，可在“选项 → 控制 → 游戏玩法”中修改。
 - 开启后，手持方块走到边缘或脚下为空时，自动在脚下放置方块。
 - 默认关闭，需要按 V 开启。
+
+## 控制面板
+
+按 **F8** 打开控制面板（可在“选项 → 控制 → 杂项”中修改按键）。
+
+面板内可以：
+
+- 开关自动补充
+- 开关自动进食
+- 调整自动进食阈值（1–20，默认 16）
+- 开关自动搭桥（与 V 键同步）
+- 点击 Done 保存并关闭
+
+设置会保存在 `.minecraft/config/autoassist.json`，重启游戏后保留。
 
 ## 环境要求
 
@@ -67,16 +82,18 @@ Windows：
 gradlew.bat build
 ```
 
-产物位于 `build/libs/autoassist-1.0.1.jar`。
+产物位于 `build/libs/autoassist-1.1.0.jar`。
 
 ## 项目结构
 
 ```text
 src/client/java/com/beta1122/autoassist/
-  AutoAssistClient.java       客户端入口与 tick 调度
-  feature/AutoRefill.java     自动补充
-  feature/AutoEat.java        自动进食
-  feature/AutoBridge.java     自动搭桥+
+  AutoAssistClient.java              客户端入口与 tick 调度
+  AutoAssistConfig.java              配置读写
+  gui/AutoAssistConfigScreen.java    游戏内控制面板
+  feature/AutoRefill.java            自动补充
+  feature/AutoEat.java               自动进食
+  feature/AutoBridge.java            自动搭桥+
 src/main/resources/
   fabric.mod.json
   pack.mcmeta

@@ -1,5 +1,14 @@
 {
 	"key.autoassist.bridge": "开关自动搭桥",
+	"key.autoassist.config": "打开 Auto Assist 控制面板",
 	"message.autoassist.bridge.on": "自动搭桥：开启",
-	"message.autoassist.bridge.off": "自动搭桥：关闭"
+	"message.autoassist.bridge.off": "自动搭桥：关闭",
+	"screen.autoassist.config": "Auto Assist 控制面板",
+	"screen.autoassist.hint": "V 键可在游戏内开关自动搭桥",
+	"option.autoassist.auto_refill": "自动补充",
+	"option.autoassist.auto_eat": "自动进食",
+	"option.autoassist.eat_threshold": "饱食度 ≤ %s 时进食",
+	"option.autoassist.auto_bridge": "自动搭桥",
+	"option.autoassist.on": "开启",
+	"option.autoassist.off": "关闭"
 }
