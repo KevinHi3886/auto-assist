@@ -3,7 +3,7 @@
 	"id": "autoassist",
 	"version": "${version}",
 	"name": "Auto Assist",
-	"description": "自动补充、自动进食和自动搭桥的客户端实用模组，带游戏内控制面板。GitHub 开源：https://github.com/KevinHi3886/auto-assist",
+	"description": "自动补充、自动进食和自动搭桥的客户端实用模组，带游戏内控制面板。支持 Minecraft 26.1–26.3。GitHub 开源：https://github.com/KevinHi3886/auto-assist",
 	"authors": [
 		"Beta1122"
 	],
@@ -21,8 +21,8 @@
 		]
 	},
 	"depends": {
-		"fabricloader": ">=0.19.5",
-		"minecraft": "~26.3",
+		"fabricloader": ">=0.19.2",
+		"minecraft": ">=26.1 <26.4",
 		"java": ">=25",
 		"fabric-api": "*"
 	}

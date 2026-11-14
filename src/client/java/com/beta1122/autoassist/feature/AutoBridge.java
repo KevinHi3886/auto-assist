@@ -1,6 +1,7 @@
 package com.beta1122.autoassist.feature;
 
 import com.beta1122.autoassist.AutoAssistConfig;
+import com.beta1122.autoassist.ClientCompat;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
@@ -34,8 +35,8 @@ public final class AutoBridge {
 		active = AutoAssistConfig.isAutoBridgeEnabled();
 		bridgeKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.autoassist.bridge",
-				InputConstants.Type.KEYBOARD,
-				InputConstants.KEY_V,
+				ClientCompat.keyboardType(),
+				InputConstants.getKey("key.keyboard.v").getValue(),
 				KeyMapping.Category.GAMEPLAY
 		));
 	}
@@ -61,7 +62,7 @@ public final class AutoBridge {
 		}
 
 		LocalPlayer player = client.player;
-		if (!active || player == null || client.level == null || client.gameMode == null || client.gui.screen() != null) {
+		if (!active || player == null || client.level == null || client.gameMode == null || ClientCompat.screen(client) != null) {
 			return;
 		}
 

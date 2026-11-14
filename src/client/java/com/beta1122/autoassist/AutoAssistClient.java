@@ -15,8 +15,8 @@ import net.minecraft.client.player.LocalPlayer;
 public final class AutoAssistClient implements ClientModInitializer {
 	private static final KeyMapping CONFIG_KEY = new KeyMapping(
 			"key.autoassist.config",
-			InputConstants.Type.KEYBOARD,
-			InputConstants.KEY_F8,
+			ClientCompat.keyboardType(),
+			InputConstants.getKey("key.keyboard.f8").getValue(),
 			KeyMapping.Category.MISC
 	);
 
@@ -31,8 +31,8 @@ public final class AutoAssistClient implements ClientModInitializer {
 
 	private static void onEndClientTick(Minecraft client) {
 		while (CONFIG_KEY.consumeClick()) {
-			if (client.gui.screen() == null) {
-				client.gui.setScreen(new AutoAssistConfigScreen());
+			if (ClientCompat.screen(client) == null) {
+				ClientCompat.setScreen(client, new AutoAssistConfigScreen());
 			}
 		}
 
@@ -47,7 +47,7 @@ public final class AutoAssistClient implements ClientModInitializer {
 
 		// Do not touch inventories while a screen/container is open, while carrying
 		// an item with the cursor, in spectator, in creative, or after death.
-		if (client.gui.screen() != null
+		if (ClientCompat.screen(client) != null
 				|| player.containerMenu != player.inventoryMenu
 				|| !player.containerMenu.getCarried().isEmpty()
 				|| player.isSpectator()

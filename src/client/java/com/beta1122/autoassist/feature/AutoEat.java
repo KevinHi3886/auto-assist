@@ -1,6 +1,7 @@
 package com.beta1122.autoassist.feature;
 
 import com.beta1122.autoassist.AutoAssistConfig;
+import com.beta1122.autoassist.ClientCompat;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
@@ -53,7 +54,7 @@ public final class AutoEat {
 		LocalPlayer player = client.player;
 		if (!AutoAssistConfig.isAutoEatEnabled()
 				|| player == null
-				|| client.gui.screen() != null
+				|| ClientCompat.screen(client) != null
 				|| player.isDeadOrDying()
 				|| player.getFoodData().getFoodLevel() >= 20) {
 			releaseKey(client);
