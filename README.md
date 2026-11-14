@@ -1,12 +1,10 @@
 # Auto Assist
 
-![Auto Assist icon](src/main/resources/assets/autoassist/icon.png)
-
 作者：**Beta1122**
 
 > **GitHub 开源：** [KevinHi3886/auto-assist](https://github.com/KevinHi3886/auto-assist) · MIT License · [问题反馈](https://github.com/KevinHi3886/auto-assist/issues)
 
-一个 **Minecraft 26.1–26.3 / Fabric 客户端** 综合实用模组。按游戏版本提供四个分开的 jar，每个 jar 只加载对应版本，四个版本都已实机测试：
+一个 **Minecraft 26.1–26.3 / Fabric 客户端** 综合实用模组。按游戏版本提供五个分开的 jar，每个 jar 只加载对应版本。26.1、26.1.2、26.2、26.3 已实机测试，26.1.1 与 26.1.2 使用同一套代码：
 
 - **自动补充**：当前快捷栏物品用完后，自动从背包补上相同物品。
 - **自动进食**：饱食度低于设定阈值（默认 16）时，自动吃背包里最合适的健康食物。
@@ -54,6 +52,7 @@
 | Minecraft | 文件 | Fabric Loader |
 | --- | --- | --- |
 | 26.1 | `autoassist-1.2.0-mc26.1.jar` | 0.19.2+ |
+| 26.1.1 | `autoassist-1.2.0-mc26.1.1.jar` | 0.19.2+ |
 | 26.1.2 | `autoassist-1.2.0-mc26.1.2.jar` | 0.19.2+ |
 | 26.2 | `autoassist-1.2.0-mc26.2.jar` | 0.19.5+ |
 | 26.3 | `autoassist-1.2.0-mc26.3.jar` | 0.19.5+ |
@@ -61,7 +60,7 @@
 ## 安装
 
 1. 安装对应版本的 Fabric Loader。
-2. 需要对应版本的 **Fabric API**（26.1、26.1.2、26.2 或 26.3）。
+2. 需要对应版本的 **Fabric API**（26.1、26.1.1、26.1.2、26.2 或 26.3）。
 3. 将对应版本的 jar 放入 `.minecraft/mods`，不要同时放多个版本。
 4. 仅客户端模组，服务器不需要安装。
 
@@ -83,7 +82,7 @@ gradlew.bat build
 
 产物：`build/libs/autoassist-1.2.0.jar`（通用构建）
 
-> [Releases](https://github.com/KevinHi3886/auto-assist/releases) 页面提供四个分版本文件，只想使用的话无需构建。Gradle 产物是通用 jar，四个分版本文件是在其基础上按版本改写 `fabric.mod.json` 生成的。
+> [Releases](https://github.com/KevinHi3886/auto-assist/releases) 页面提供五个分版本文件，只想使用的话无需构建。Gradle 产物是通用 jar，五个分版本文件是在其基础上按版本改写 `fabric.mod.json` 生成的。
 
 ## 项目结构
 
