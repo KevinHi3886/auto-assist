@@ -1,14 +1,17 @@
 # Auto Assist
 
+![Auto Assist icon](src/main/resources/assets/autoassist/icon.png)
+
 作者：**Beta1122**
 
 > **GitHub 开源：** [KevinHi3886/auto-assist](https://github.com/KevinHi3886/auto-assist) · MIT License · [问题反馈](https://github.com/KevinHi3886/auto-assist/issues)
 
-一个 **Minecraft 26.1–26.3 / Fabric 客户端** 综合实用模组。按游戏版本提供五个分开的 jar，每个 jar 只加载对应版本。26.1、26.1.2、26.2、26.3 已实机测试，26.1.1 与 26.1.2 使用同一套代码：
+一个 **Minecraft 26.1–26.3 / Fabric 客户端** 综合实用模组。按游戏版本提供五个分开的 jar，每个 jar 只加载对应版本。1.3.0 的五个版本均已编译通过；此前 26.1、26.1.2、26.2、26.3 已实机测试：
 
 - **自动补充**：当前快捷栏物品用完后，自动从背包补上相同物品。
 - **自动进食**：饱食度低于设定阈值（默认 16）时，自动吃背包里最合适的健康食物。
 - **自动搭桥+**：按 **V** 开关，在脚下自动放置手中方块。
+- **自动工具**：按 **F7** 开关，挖掘方块时自动切到快捷栏里最适合的工具。
 - **控制面板**：按 **F8** 打开，可开关功能并调整自动进食阈值。
 
 ## 功能说明
@@ -33,6 +36,15 @@
 - 开启后，手持方块走到边缘/脚下为空时自动在脚下放置方块。
 - 默认关闭，需要按 V 开启。
 
+### 自动工具
+
+- 默认按键 **F7**，可在“选项 → 控制 → 游戏玩法”里修改。
+- 开启后，开始挖掘方块时扫描快捷栏，优先选择能正确掉落方块的工具，其次比较挖掘速度。
+- 只在挖掘方块时切换，不会在攻击生物、放置方块或使用物品时切换。
+- 只会在快捷栏 1–9 中找工具，不会从背包里取工具。
+- 默认关闭，按 F7 开启/关闭。
+- F7 在原版和常见模组中很少被占用；如果仍与其他模组冲突，可以在控制设置里改成别的键。
+
 ## 控制面板
 
 按 **F8** 打开控制面板（可在“选项 → 控制 → 杂项”中修改按键）。
@@ -43,6 +55,7 @@
 - 开关自动进食
 - 调整自动进食阈值（1–20，默认 16）
 - 开关自动搭桥（与 V 键同步）
+- 开关自动工具（与 F7 键同步）
 - 点击 Done 保存并关闭
 
 设置会保存在 `.minecraft/config/autoassist.json`，重启游戏后保留。
@@ -51,11 +64,11 @@
 
 | Minecraft | 文件 | Fabric Loader |
 | --- | --- | --- |
-| 26.1 | `autoassist-1.2.0-mc26.1.jar` | 0.19.2+ |
-| 26.1.1 | `autoassist-1.2.0-mc26.1.1.jar` | 0.19.2+ |
-| 26.1.2 | `autoassist-1.2.0-mc26.1.2.jar` | 0.19.2+ |
-| 26.2 | `autoassist-1.2.0-mc26.2.jar` | 0.19.5+ |
-| 26.3 | `autoassist-1.2.0-mc26.3.jar` | 0.19.5+ |
+| 26.1 | `autoassist-1.3.0-mc26.1.jar` | 0.19.2+ |
+| 26.1.1 | `autoassist-1.3.0-mc26.1.1.jar` | 0.19.2+ |
+| 26.1.2 | `autoassist-1.3.0-mc26.1.2.jar` | 0.19.2+ |
+| 26.2 | `autoassist-1.3.0-mc26.2.jar` | 0.19.5+ |
+| 26.3 | `autoassist-1.3.0-mc26.3.jar` | 0.19.5+ |
 
 ## 安装
 
@@ -80,7 +93,7 @@ Windows：
 gradlew.bat build
 ```
 
-产物：`build/libs/autoassist-1.2.0.jar`（通用构建）
+产物：`build/libs/autoassist-1.3.0.jar`（通用构建）
 
 > [Releases](https://github.com/KevinHi3886/auto-assist/releases) 页面提供五个分版本文件，只想使用的话无需构建。Gradle 产物是通用 jar，五个分版本文件是在其基础上按版本改写 `fabric.mod.json` 生成的。
 
@@ -95,6 +108,7 @@ src/client/java/com/beta1122/autoassist/
   feature/AutoRefill.java            自动补充
   feature/AutoEat.java               自动进食
   feature/AutoBridge.java            自动搭桥+
+  feature/AutoTool.java              自动工具
 src/main/resources/
   fabric.mod.json
   pack.mcmeta

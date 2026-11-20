@@ -26,6 +26,7 @@ public final class AutoAssistConfig {
 	private static boolean autoEatEnabled = true;
 	private static int eatThreshold = 16;
 	private static boolean autoBridgeEnabled;
+	private static boolean autoToolEnabled;
 
 	private AutoAssistConfig() {
 	}
@@ -51,6 +52,9 @@ public final class AutoAssistConfig {
 			if (object.has("autoBridge")) {
 				autoBridgeEnabled = object.get("autoBridge").getAsBoolean();
 			}
+			if (object.has("autoTool")) {
+				autoToolEnabled = object.get("autoTool").getAsBoolean();
+			}
 		} catch (IOException | RuntimeException exception) {
 			LOGGER.warn("Could not read {}; keeping defaults.", CONFIG_PATH, exception);
 		}
@@ -64,6 +68,7 @@ public final class AutoAssistConfig {
 			object.addProperty("autoEat", autoEatEnabled);
 			object.addProperty("eatThreshold", eatThreshold);
 			object.addProperty("autoBridge", autoBridgeEnabled);
+			object.addProperty("autoTool", autoToolEnabled);
 			Files.writeString(CONFIG_PATH, GSON.toJson(object), StandardCharsets.UTF_8);
 		} catch (IOException exception) {
 			LOGGER.warn("Could not save {}.", CONFIG_PATH, exception);
@@ -100,6 +105,14 @@ public final class AutoAssistConfig {
 
 	public static void setAutoBridgeEnabled(boolean value) {
 		autoBridgeEnabled = value;
+	}
+
+	public static boolean isAutoToolEnabled() {
+		return autoToolEnabled;
+	}
+
+	public static void setAutoToolEnabled(boolean value) {
+		autoToolEnabled = value;
 	}
 
 	private static int clampThreshold(int value) {

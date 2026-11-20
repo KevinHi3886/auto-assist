@@ -12,12 +12,13 @@ public final class AutoAssistConfigScreen extends Screen {
 	private static final int BUTTON_WIDTH = 240;
 	private static final int BUTTON_HEIGHT = 20;
 	private static final int BUTTON_SPACING = 8;
-	private static final int PANEL_HEIGHT = 204;
+	private static final int PANEL_HEIGHT = 232;
 
 	private Button autoRefillButton;
 	private Button autoEatButton;
 	private Button thresholdButton;
 	private Button autoBridgeButton;
+	private Button autoToolButton;
 	private int panelLeft;
 	private int panelTop;
 	private int panelWidth;
@@ -77,10 +78,19 @@ public final class AutoAssistConfigScreen extends Screen {
 				}
 		).bounds(x, y + (BUTTON_HEIGHT + BUTTON_SPACING) * 3, BUTTON_WIDTH, BUTTON_HEIGHT).build());
 
+		autoToolButton = this.addRenderableWidget(Button.builder(
+				label("option.autoassist.auto_tool", AutoAssistConfig.isAutoToolEnabled()),
+				button -> {
+					AutoAssistConfig.setAutoToolEnabled(!AutoAssistConfig.isAutoToolEnabled());
+					AutoAssistConfig.save();
+					updateLabels();
+				}
+		).bounds(x, y + (BUTTON_HEIGHT + BUTTON_SPACING) * 4, BUTTON_WIDTH, BUTTON_HEIGHT).build());
+
 		this.addRenderableWidget(Button.builder(
 				Component.translatable("gui.done"),
 				button -> this.onClose()
-		).bounds(x, y + (BUTTON_HEIGHT + BUTTON_SPACING) * 4, BUTTON_WIDTH, BUTTON_HEIGHT).build());
+		).bounds(x, y + (BUTTON_HEIGHT + BUTTON_SPACING) * 5, BUTTON_WIDTH, BUTTON_HEIGHT).build());
 
 		updateLabels();
 	}
@@ -99,6 +109,7 @@ public final class AutoAssistConfigScreen extends Screen {
 		autoEatButton.setMessage(label("option.autoassist.auto_eat", AutoAssistConfig.isAutoEatEnabled()));
 		thresholdButton.setMessage(thresholdLabel());
 		autoBridgeButton.setMessage(label("option.autoassist.auto_bridge", AutoBridge.isActive()));
+		autoToolButton.setMessage(label("option.autoassist.auto_tool", AutoAssistConfig.isAutoToolEnabled()));
 	}
 
 	private static Component label(String key, boolean enabled) {
