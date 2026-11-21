@@ -14,5 +14,6 @@
   "key.autoassist.auto_tool": "开关自动工具",
   "message.autoassist.auto_tool.on": "自动工具：开启",
   "message.autoassist.auto_tool.off": "自动工具：关闭",
-  "option.autoassist.auto_tool": "自动工具"
+  "option.autoassist.auto_tool": "自动工具",
+  "message.autoassist.auto_tool.low_durability": "自动工具：%s 只剩 %s 点耐久，已暂停自动使用。"
 }

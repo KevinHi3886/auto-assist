@@ -14,5 +14,6 @@
   "key.autoassist.auto_tool": "Toggle Auto Tool",
   "message.autoassist.auto_tool.on": "Auto Tool: ON",
   "message.autoassist.auto_tool.off": "Auto Tool: OFF",
-  "option.autoassist.auto_tool": "Auto Tool"
+  "option.autoassist.auto_tool": "Auto Tool",
+  "message.autoassist.auto_tool.low_durability": "Auto Tool: %s has only %s durability left; auto use paused."
 }
